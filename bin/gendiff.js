@@ -3,7 +3,7 @@
 import path from 'path';
 import { Command } from 'commander/esm.mjs';
 import { cwd } from 'process';
-import { action } from '../commander.js';
+import action from '../commander.js';
 
 const program = new Command();
 program
