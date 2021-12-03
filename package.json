@@ -1,10 +1,11 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
+  "type": "module",
   "description": "[![Actions Status](https://github.com/NataliaChunikhina/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/NataliaChunikhina/frontend-project-lvl2/actions)",
-  "main": "index.js",
+  "main": "commander.js",
   "bin": {
-    "gendiff": "bin/gendiff"
+    "gendiff": "bin/gendiff.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,6 +21,14 @@
   },
   "homepage": "https://github.com/NataliaChunikhina/frontend-project-lvl2#readme",
   "dependencies": {
-    "commander": "^8.3.0"
+    "commander": "^8.3.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3"
   }
 }
