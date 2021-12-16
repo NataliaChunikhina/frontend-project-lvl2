@@ -1,6 +1,19 @@
 import fs from 'fs';
 import _ from 'lodash';
 
+const getFileExtension = (file) => {
+  const indexOfExtension = file.indexOf('.') + 1;
+  const fileExtension = file.slice(indexOfExtension - file.length).toLowerCase();
+  return fileExtension;
+};
+const readFileToObject = (file, typeFile) => {
+  let obj = {};
+  if (typeFile === 'json') {
+    const fileJson = fs.readFileSync(file, 'utf-8');
+    obj = JSON.parse(fileJson);
+  }
+  return obj;
+};
 const getkeysMerged = (object1, object2) => {
   const keys1 = Object.keys(object1);
   const keys2 = Object.keys(object2);
@@ -8,7 +21,11 @@ const getkeysMerged = (object1, object2) => {
   const keysSorted = _.sortBy(keysMerged);
   return keysSorted;
 };
-const genDiff = (objFile1, objFile2) => {
+export const genDiff = (filepath1, filepath2) => {
+  const typeFile1 = getFileExtension(filepath1);
+  const typeFile2 = getFileExtension(filepath2);
+  const objFile1 = readFileToObject(filepath1, typeFile1);
+  const objFile2 = readFileToObject(filepath2, typeFile2);
   const keys = getkeysMerged(objFile1, objFile2);
 
   let result = '';
@@ -32,23 +49,8 @@ const genDiff = (objFile1, objFile2) => {
 
   return result;
 };
-
 const action = (file1, file2) => {
-  const indexOfExtension1 = file1.indexOf('.') + 1;
-  const indexOfExtension2 = file2.indexOf('.') + 1;
-  const typeFile1 = file1.slice(indexOfExtension1 - file1.length).toLowerCase();
-  const typeFile2 = file2.slice(indexOfExtension2 - file2.length).toLowerCase();
-  let obj1 = {};
-  let obj2 = {};
-  if (typeFile1 === 'json') {
-    const fileJson1 = fs.readFileSync(file1, 'utf-8');
-    obj1 = JSON.parse(fileJson1);
-  }
-  if (typeFile2 === 'json') {
-    const fileJson2 = fs.readFileSync(file2, 'utf-8');
-    obj2 = JSON.parse(fileJson2);
-  }
-  console.log(genDiff(obj1, obj2));
+  console.log(genDiff(file1, file2));
 };
 
 export default action;

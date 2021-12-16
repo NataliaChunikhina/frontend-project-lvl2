@@ -1,5 +1,8 @@
 {
   "name": "@hexlet/code",
+  "jest": {
+    "verbose": true
+  },
   "version": "1.0.0",
   "type": "module",
   "description": "[![Actions Status](https://github.com/NataliaChunikhina/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/NataliaChunikhina/frontend-project-lvl2/actions)",
@@ -8,7 +11,7 @@
     "gendiff": "bin/gendiff.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest --bail"
   },
   "repository": {
     "type": "git",
@@ -25,10 +28,14 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@jest/globals": "^27.4.4",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "eslint": "^8.3.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.3"
+    "eslint-plugin-import": "^2.25.3",
+    "jest": "^27.4.3",
+    "jest-circus": "^27.4.5",
+    "jest-cli": "^27.4.5"
   }
 }
