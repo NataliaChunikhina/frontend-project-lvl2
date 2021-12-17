@@ -1,19 +1,7 @@
-import fs from 'fs';
 import _ from 'lodash';
+import path from 'path';
+import readFileToObject from './parsers.js';
 
-const getFileExtension = (file) => {
-  const indexOfExtension = file.indexOf('.') + 1;
-  const fileExtension = file.slice(indexOfExtension - file.length).toLowerCase();
-  return fileExtension;
-};
-const readFileToObject = (file, typeFile) => {
-  let obj = {};
-  if (typeFile === 'json') {
-    const fileJson = fs.readFileSync(file, 'utf-8');
-    obj = JSON.parse(fileJson);
-  }
-  return obj;
-};
 const getkeysMerged = (object1, object2) => {
   const keys1 = Object.keys(object1);
   const keys2 = Object.keys(object2);
@@ -22,8 +10,8 @@ const getkeysMerged = (object1, object2) => {
   return keysSorted;
 };
 export const genDiff = (filepath1, filepath2) => {
-  const typeFile1 = getFileExtension(filepath1);
-  const typeFile2 = getFileExtension(filepath2);
+  const typeFile1 = path.extname(filepath1);
+  const typeFile2 = path.extname(filepath2);
   const objFile1 = readFileToObject(filepath1, typeFile1);
   const objFile2 = readFileToObject(filepath2, typeFile2);
   const keys = getkeysMerged(objFile1, objFile2);

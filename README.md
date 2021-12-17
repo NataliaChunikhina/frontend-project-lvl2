@@ -22,3 +22,7 @@ npm link
 ```sh
 Make test
 ```
+### starting the packege gendiff (json-format files)
+[![asciicast](https://asciinema.org/a/VNvSUKnqKuXLZ65NiAwkrvHsX.svg)](https://asciinema.org/a/VNvSUKnqKuXLZ65NiAwkrvHsX)
+### starting the packege gendiff (yml-format files)
+[![asciicast](https://asciinema.org/a/J3LUJMa7557tV8XFbZPQzNgCw.svg)](https://asciinema.org/a/J3LUJMa7557tV8XFbZPQzNgCw)
